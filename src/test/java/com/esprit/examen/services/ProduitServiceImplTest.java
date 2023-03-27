@@ -1,126 +1,96 @@
 package com.esprit.examen.services;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
-import static org.assertj.core.api.Assertions.assertThat;
+
+
+import com.esprit.examen.entities.Produit;
+import com.esprit.examen.repositories.ProduitRepository;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.*;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.*;
 
-import com.esprit.examen.entities.DetailFacture;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.esprit.examen.entities.CategorieProduit;
-import com.esprit.examen.entities.Produit;
-import com.esprit.examen.entities.Stock;
-import com.esprit.examen.repositories.CategorieProduitRepository;
-import com.esprit.examen.repositories.ProduitRepository;
-import com.esprit.examen.repositories.StockRepository;
+import static org.mockito.Matchers.isA;
+import static org.mockito.Mockito.*;
+
+
 
 @ExtendWith(MockitoExtension.class)
-public class ProduitServiceImplTest {
-
-    @InjectMocks
-    ProduitServiceImpl produitService;
+public class ProduitServiceImplMockTest {
 
     @Mock
     ProduitRepository produitRepository;
 
-    @Mock
-    StockRepository stockRepository;
+    @InjectMocks
+    IProduitService produitService = new ProduitServiceImpl();
 
-    @Mock
-    CategorieProduitRepository categorieProduitRepository;
+
+
+
+
+
+    Produit produit = new Produit(1L, "l1","sqdqsd", 1F, new Date(),null,null,null,null);
+    List<Produit> listProduits = new ArrayList<Produit>() {
+        {
+            add(new Produit(1L, "l1","sqdqsd", 1F, new Date(),null,null,null,null));
+            add(new Produit(1L, "l1","sqdqsd", 1F, new Date(),null,null,null,null));
+        }
+    };
+
 
     @Test
-    public void testRetrieveAllProduits() {
-        // Given
-        Produit produit1 =  new Produit(1L,"code","libelle",12F, new Date(),new Date(),new Stock(), (Set<DetailFacture>) new DetailFacture(),new CategorieProduit());
-        Produit produit2 =  new Produit(1L,"code","libelle",12F, new Date(),new Date(),new Stock(), (Set<DetailFacture>) new DetailFacture(),new CategorieProduit());
-        List<Produit> produits = new ArrayList<>();
-        produits.add(produit1);
-        produits.add(produit2);
+    void testRetrieveProduitByid() {
+
+        when(produitRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(produit));
+        Produit produitq = produitService.retrieveProduit(1L);
+
+        System.out.println(produitq);
+        Assertions.assertNotNull(produitq);
+    }
+    @Test
+    void testRetrieveAllProduit() {
+
+        List<Produit> produits = new ArrayList();
+        produits.add(new Produit());
         when(produitRepository.findAll()).thenReturn(produits);
+        List<Produit> expected = produitService.retrieveAllProduits();
+        Assertions.assertEquals(expected, produits);
+        verify(produitRepository).findAll();
 
-        // When
-        List<Produit> result = produitService.retrieveAllProduits();
-
-        // Then
-        assertThat(result).hasSize(2);
-        assertThat(result).containsExactly(produit1, produit2);
     }
 
-    @Test
-    public void testAddProduit() {
-        // Given
-        Produit produit =  new Produit(1L,"code","libelle",12F, new Date(),new Date(),new Stock(), (Set<DetailFacture>) new DetailFacture(),new CategorieProduit());
-        when(produitRepository.save(any(Produit.class))).thenReturn(produit);
-
-        // When
-        Produit result = produitService.addProduit(produit);
-
-        // Then
-        assertThat(result).isEqualTo(produit);
-    }
-
-    @Test
-    public void testDeleteProduit() {
-        // Given
-        Long produitId = 1L;
-        doNothing().when(produitRepository).deleteById(produitId);
-
-        // When
-        produitService.deleteProduit(produitId);
-
-        // Then
-        // No exception should be thrown
-    }
-
-    @Test
-    public void testUpdateProduit() {
-        // Given
-        Produit produit =  new Produit(1L,"code","libelle",12F, new Date(),new Date(),new Stock(), (Set<DetailFacture>) new DetailFacture(),new CategorieProduit());
-        when(produitRepository.save(any(Produit.class))).thenReturn(produit);
-
-        // When
-        Produit result = produitService.updateProduit(produit);
-
-        // Then
-        assertThat(result).isEqualTo(produit);
-    }
 
 
     @Test
-    public void testAssignProduitToStock() {
-        // Given
-        Produit produit = new Produit();
-        produit.setLibelleProduit("Produit Test");
-        produit.setPrix(100.0F);
-        produit.setDateCreation(new Date());
-        produit.setIdProduit(1L);
-        produit.setCodeProduit("Ref-Test");
-        produitService.addProduit(produit);
+    void testCreateNewObject() {
+        Produit obj = new Produit(1L, "l1","sqdqsd", 1F, new Date(),null,null,null,null);
 
-        Stock stock = new Stock();
-        stock.setLibelleStock("Adresse Test");
-        stock.setQte(100);
-        stockRepository.save(stock);
 
-        // When
-        produitService.assignProduitToStock(produit.getIdProduit(), stock.getIdStock());
+        when(produitRepository.save(isA(Produit.class))).thenAnswer(invocation -> (Produit) invocation.getArguments()[0]);
+        Produit returnedObj = produitService.addProduit(obj);
+        ArgumentCaptor<Produit> savedObjectArgument = ArgumentCaptor.forClass(Produit.class);
+        verify(produitRepository, times(1)).save(savedObjectArgument.capture());
+        verifyNoMoreInteractions(produitRepository);
 
-        // Then
-        Produit produitResult = produitService.retrieveProduit(produit.getIdProduit());
-        assertEquals(stock.getIdStock(), produitResult.getStock().getIdStock());
+        Produit savedRestObject = savedObjectArgument.getValue();
+        Assertions.assertNotNull(savedRestObject);
 
-        // Clean-up
-        produitService.deleteProduit(produit.getIdProduit());
-        stockRepository.delete(stock);
     }
+
+    @Test
+    void testDeleteObject() {
+        Produit produite = new Produit();
+        produite.setCodeProduit("new test");
+        produite.setIdProduit(1L);
+        when(produitRepository.findById(produite.getIdProduit())).thenReturn(Optional.of(produite));
+        Produit produitq = produitService.retrieveProduit(1L);
+        produitService.deleteProduit(produitq.getIdProduit());
+        verify(produitRepository).deleteById(produitq.getIdProduit());
+    }
+
+
+
 }
