@@ -2,7 +2,7 @@
 
   services:
     mysqldb:
-      container_name: mysqldb
+      container_name: mysqldb1
       image: mysql:8
       restart: unless-stopped
       environment:
@@ -17,4 +17,4 @@
       ports:
         - 9091:9091
       depends_on:
-        - mysqldb
+        - mysqldb1
