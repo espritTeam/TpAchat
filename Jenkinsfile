@@ -11,11 +11,12 @@ pipeline {
                  sh 'mvn test'
             }
         }
-        stage('Deploy') {
+        stage ('SonarQube') {
             steps {
-                sh 'make deploy'
+                    sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
+
             }
-        }
+        
     }
 }
 
