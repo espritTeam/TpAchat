@@ -2,7 +2,7 @@
 
   services:
     mysqldb:
-      container_name: mysqldb1
+      container_name: mysqldb
       image: mysql:8
       restart: unless-stopped
       environment:
@@ -11,10 +11,10 @@
    #     - /home/mysql/data:/var/lib/mysql
 
     spring_app:
-      image: rama459/achatproject
-      container_name: achatproject1
+      image: cyrinearfaoui/tpachat
+      container_name: achatproject
       restart: on-failure
       ports:
-        - 9000:9000
+        - 9091:9091
       depends_on:
         - mysqldb
