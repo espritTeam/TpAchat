@@ -16,7 +16,12 @@ pipeline {
                     sh 'mvn sonar:sonar -Dsonar.login=admin -Dsonar.password=admin123'
 
             }
-        
+        }
+        stage('Deploy') {
+            steps {
+                sh 'make deploy'
+            }
+        }
     }
 }
 
