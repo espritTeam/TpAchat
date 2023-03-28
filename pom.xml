@@ -83,13 +83,17 @@
    				<version>3.1.0</version>
 			</plugin>
 			<plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-release-plugin</artifactId>
-      <version>2.5.3</version>
-      <configuration>
-        <autoVersionSubmodules>true</autoVersionSubmodules>
-      </configuration>
-    </plugin>
+                        	<groupId>org.codehaus.mojo</groupId>
+     				<artifactId>versions-maven-plugin</artifactId>
+      				<version>2.7</version>
+      				<configuration>
+       				 	<generateBackupPoms>false</generateBackupPoms>
+     				</configuration>
+				<goals>
+               				 <goal>package</goal>
+                			 <goal>versions:set -DnewVersion=1.0.1-SNAPSHOT</goal>
+            			</goals>
+    			</plugin>
 		</plugins>
 	</build>
 	<distributionManagement>
