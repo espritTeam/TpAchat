@@ -11,7 +11,7 @@
    #     - /home/mysql/data:/var/lib/mysql
 
     spring_app:
-      image: abdelwehed/imageachat:88
+      image: abdelwehed/imageachat
       container_name: achatproject1
       restart: on-failure
       ports:
