@@ -36,7 +36,7 @@ public class FactureServiceImplTest {
 
     @Test
     public void testAddFacture () throws  ParseException  {
-        Facture f = new Facture(20f,200f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022), true,null,null,null,null);
+        Facture f = new Facture(20l,200f,20f, new Date(10 / 10 / 2020),new Date(10 / 10 / 2022),null,null,null,null);
         Facture savedFactrure= factureService.addFacture(f);
         System.out.print("client "+savedFactrure);
         assertNotNull(savedFactrure);
