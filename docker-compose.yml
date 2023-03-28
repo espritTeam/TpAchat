@@ -2,7 +2,7 @@
 
   services:
     mysqldb:
-      container_name: mysqldb1
+      container_name: mysqldb
       image: mysql:8
       restart: unless-stopped
       environment:
@@ -15,6 +15,6 @@
       container_name: achatproject1
       restart: on-failure
       ports:
-        - 9000:9000
+        - 9001:9001
       depends_on:
         - mysqldb
