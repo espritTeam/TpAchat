@@ -70,6 +70,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -100,14 +105,14 @@
 	<distributionManagement>
  		 <repository>
     			<id>deploymentRepo</id>
-    			<name>Nexus Repository</name>
+    			<name>Releases</name>
    			<url>http://172.10.0.140:8081/repository/maven-releases/</url>
   		</repository>
-		 <repository>
-    			<id>nexus</id>
-    			<name>Nexus Repository</name>
+		<snapshotRepository>
+    			<id>deploymentRepo</id>
+    			<name>Snapshots</name>
    			<url>http://172.10.0.140:8081/repository/maven-snapshots/</url>
-  		</repository>
+		</snapshotRepository>
 	</distributionManagement>
 
 

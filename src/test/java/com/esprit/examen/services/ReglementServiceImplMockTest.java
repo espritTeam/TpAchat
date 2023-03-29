@@ -41,12 +41,12 @@ public class ReglementServiceImplMockTest {
     ReglementRepository reglementRepository;
     @InjectMocks
     ReglementServiceImpl reglementservice;
-    Reglement R = new Reglement(1L,22f, 22f, true, new Date(),null);
+    Reglement R = new Reglement(1L,22f, 22f, true, new Date(),s);
     @SuppressWarnings("serial")
     ArrayList<Reglement> listereglements = new ArrayList<Reglement>() {
         {
-            add( new Reglement(1L,25f, 25f, true, new Date(),null));
-            add( new Reglement(3L,24f, 24f, true, new Date(),null));
+            add( new Reglement(1L,25f, 25f, true, new Date(),s));
+            add( new Reglement(3L,24f, 24f, true, new Date(),s));
         }
     };
     @Test
