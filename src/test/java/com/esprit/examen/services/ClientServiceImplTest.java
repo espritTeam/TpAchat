@@ -40,7 +40,7 @@ public class ClientServiceImplTest {
 		assertNotNull(client.getIdClient());
 		assertNotNull(client.getCategorieClient());
 		assertTrue(client.getNom().length() > 0 );
-		clientService.deleteClient(client.getIdClient());
+		clientService.deleteClient(client.getIdClient() );
 
 	}
 	@Test
