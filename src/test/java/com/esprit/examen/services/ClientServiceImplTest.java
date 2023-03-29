@@ -1,7 +1,6 @@
 /*package com.esprit.examen.services;
 
 import static org.junit.Assert.*;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
