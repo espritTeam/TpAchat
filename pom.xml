@@ -103,6 +103,11 @@
     			<name>Nexus Repository</name>
    			<url>http://172.10.0.140:8081/repository/maven-releases/</url>
   		</repository>
+		 <repository>
+    			<id>nexus</id>
+    			<name>Nexus Repository</name>
+   			<url>http://172.10.0.140:8081/repository/maven-snapshots/</url>
+  		</repository>
 	</distributionManagement>
 
 
