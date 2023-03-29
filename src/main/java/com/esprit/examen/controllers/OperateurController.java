@@ -2,13 +2,14 @@ package com.esprit.examen.controllers;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.esprit.examen.entities.Operateur;
 import com.esprit.examen.services.IOperateurService;
 
 import io.swagger.annotations.Api;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 @RestController
 @Api(tags = "Gestion des opérateurs")
 @RequestMapping("/operateur")
