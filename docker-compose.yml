@@ -11,8 +11,8 @@
    #     - /home/mysql/data:/var/lib/mysql
 
     spring_app:
-      image: rama459/achatproject
-      container_name: achatproject1
+      image: boubakermrabet/tpachat
+      container_name: achatproject
       restart: on-failure
       ports:
         - 9001:9001
