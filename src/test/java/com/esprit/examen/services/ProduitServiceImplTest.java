@@ -49,7 +49,7 @@ public class ProduitServiceImplTest {
 
         int expected = produits.size();
 
-        Stock s = new Stock("stock test",10,100);
+        Stock s = new Stock(1L,"stock",12,1,null);
         Stock savedStock= stockService.addStock(s);
 
         Calendar myCalendar = new GregorianCalendar(2022, 8, 11);
@@ -80,7 +80,7 @@ public class ProduitServiceImplTest {
     @Order(2)
     public void testAddProductOptimized() {
 
-        Stock s = new Stock("stock test",10,100);
+        Stock s = new Stock(1L,"stock",12,1,null);
         Stock savedStock= stockService.addStock(s);
 
 
@@ -112,7 +112,7 @@ public class ProduitServiceImplTest {
     @Order(5)
     public void testUpdateProduct() {
 
-        Stock s = new Stock(" new stock ",10,100);
+        Stock s = new Stock(1L,"stock",12,1,null);
         Stock savedStock= stockService.addStock(s);
 
         Calendar myCalendar = new GregorianCalendar(2022, 8, 11);
@@ -153,7 +153,7 @@ public class ProduitServiceImplTest {
     @Test
     @Order(3)
     public void testDeleteProduit() {
-        Stock s = new Stock("stock test",10,100);
+        Stock s = new Stock(1L,"stock",12,1,null);
         Stock savedStock= stockService.addStock(s);
 
         Calendar myCalendar = new GregorianCalendar(2022, 8, 11);
