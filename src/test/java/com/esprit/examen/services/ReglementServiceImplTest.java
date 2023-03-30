@@ -28,7 +28,7 @@ public class ReglementServiceImplTest {
     @Autowired
     ReglementRepository reglementRepository;
     @Test
-    public void retrieveAllReglements() throws ParseException {
+    public void testRetrieveAllReglements() throws ParseException {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date Date1 = dateFormat.parse("25/09/2000");
         List<Reglement> reglements = (List<Reglement>) reglementservice.retrieveAllReglements();
