@@ -31,6 +31,7 @@ public class StockServiceImplTest {
 	
 	@Test
 	public void testAddStockOptimized() {
+	
 
 		Stock s = new Stock("stock test",10,100);
 		Stock savedStock= stockService.addStock(s);
