@@ -44,14 +44,14 @@ public class ReglementRestController {
         return reglementService.retrieveReglement(reglementId);
     }
 
-    // http://localhost:8089/SpringMVC/reglement/retrieveReglementByFacture/8
+    // http://localhost:8089/SpringMVC/reglement/retrieveReglementByFacture/7
     @GetMapping("/retrieveReglementByFacture/{facture-id}")
     @ResponseBody
     public List<Reglement> retrieveReglementByFacture(@PathVariable("facture-id") Long factureId) {
         return reglementService.retrieveReglementByFacture(factureId);
     }
 
-    // http://localhost:8089/SpringMVC/reglement/getChiffreAffaireEntreDeuxDate/{startDate}/{endDate}
+   
     @GetMapping(value = "/getChiffreAffaireEntreDeuxDate/{startDate}/{endDate}")
     public float getChiffreAffaireEntreDeuxDate(
             @PathVariable(name = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date startDate,
