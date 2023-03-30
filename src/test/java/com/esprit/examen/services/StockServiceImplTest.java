@@ -30,6 +30,8 @@ public class StockServiceImplTest {
 		
 	} 
 	
+	
+	
 	@Test
 	public void testAddStockOptimized() {
 
