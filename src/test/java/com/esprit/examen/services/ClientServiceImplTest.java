@@ -33,14 +33,14 @@ public class ClientServiceImplTest {
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date dateNaissance = dateFormat.parse("30/09/2000");
-		Client c = new Client("Salhi", "Ahmed", dateNaissance, "ahmed.salhi@esprit.tn", "pwd", Profession.Cadre,
+		Client c = new Client("Salhi", "Ahmed", dateNaissance , "ahmed.salhi@esprit.tn", "pwd", Profession.Cadre,
 				CategorieClient.Ordinaire);
 		Client client = clientService.addClient(c);
 		System.out.print("client "+client);
 		assertNotNull(client.getIdClient());
 		assertNotNull(client.getCategorieClient());
-		assertTrue(client.getNom().length() > 0);
-		clientService.deleteClient(client.getIdClient());
+		assertTrue(client.getNom().length() > 0 );
+		clientService.deleteClient(client.getIdClient() );
 
 	}
 	@Test
