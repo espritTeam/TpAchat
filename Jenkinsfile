@@ -31,7 +31,7 @@ pipeline {
 
             }
         }
-        stage('Deploy') {
+        stage('PUBLISH TO NEXUS') {
             steps {
                 sh 'make deploy'
             }
