@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.*;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -30,6 +32,7 @@ import com.esprit.examen.repositories.ReglementRepository;
 import com.esprit.examen.repositories.StockRepository;
 
 @ExtendWith(MockitoExtension.class)
+@Slf4j
 public class ReglementServiceImplMockTest {
 
     @Mock
@@ -54,6 +57,7 @@ public class ReglementServiceImplMockTest {
         Mockito.when(reglementRepository.findAll()).thenReturn(listereglements);
         List<Reglement> pr =reglementservice.retrieveAllReglements();
         assertNotNull(pr);
+        log.info("Retrieve Allreglement works !");
     }
 
 
@@ -66,6 +70,7 @@ public class ReglementServiceImplMockTest {
         assertNotNull(R.getMontantRestant());
         assertNotNull(R.getPayee());
         assertNotNull(R.getDateReglement());
+        log.info("add works !!");
     }
 
     @Test
@@ -74,6 +79,7 @@ public class ReglementServiceImplMockTest {
 
         Reglement pr =reglementservice.retrieveReglement(2L);
         assertNotNull(pr);
+        log.info("Retrieve reglement works !");
 
     }
 
