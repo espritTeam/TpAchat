@@ -76,7 +76,7 @@ public class ClientServiceImplTest {
 		List<Client> clients = clientService.getClientsByDateNaissance(startDate, endDate);
 		log.info(" count" + clients.size());
 		for (Client client : clients) {
-			log.info(" client : " + client.getNom()+ " né le "+client.getDateNaissance());
+			   log.info(" client : " + client.getNom()+ " né le "+client.getDateNaissance());
 
 		}
 	}
