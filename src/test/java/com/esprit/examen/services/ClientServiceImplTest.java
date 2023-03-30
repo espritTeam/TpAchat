@@ -70,7 +70,7 @@ public class ClientServiceImplTest {
 	@Test
 	public void testGetClientsByDateNaissance() throws ParseException
 	{
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date startDate = dateFormat.parse("28/09/2000");
 		Date endDate = dateFormat.parse("30/09/2005");
 		List<Client> clients = clientService.getClientsByDateNaissance(startDate, endDate);
