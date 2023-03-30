@@ -42,7 +42,7 @@ public class StockServiceImplTest {
 	
 	@Test
 	public void testDeleteStock() {
-		Stock s = new Stock("stock test",30,60);
+		Stock s = new Stock("stock test",30,60 );
 		Stock savedStock= stockService.addStock(s);
 		stockService.deleteStock(savedStock.getIdStock());
 		assertNull(stockService.retrieveStock(savedStock.getIdStock()));
