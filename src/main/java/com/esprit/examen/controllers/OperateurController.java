@@ -23,7 +23,8 @@ public class OperateurController {
 	@GetMapping("/retrieve-all-operateurs")
 	@ResponseBody
 	public List<Operateur> getOperateurs() {
-		return operateurService.retrieveAllOperateurs();
+	List<Operateur> list = operateurService.retrieveAllOperateurs();
+		return list;
 
 	}
 
