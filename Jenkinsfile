@@ -33,7 +33,7 @@ pipeline {
         }
         stage('PUBLISH TO NEXUS') {
             steps {
-                sh 'make deploy'
+                sh 'sh mvn deploy'
             }
         }
     }
