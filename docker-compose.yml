@@ -1,20 +1,20 @@
-  version: "3"
+ version: "3"
 
-  services:
-    mysqldb:
+ services:
+    mysqldb1:
       container_name: mysqldb1
       image: mysql:8
       restart: unless-stopped
       environment:
         MYSQL_ROOT_PASSWORD: root
-  #    volumes:
-   #     - /home/mysql/data:/var/lib/mysql
+   #   volumes:
+    #    - /home/mysql/data:/var/lib/mysql
 
     spring_app:
-      image: rama459/achatproject
+      image: islem23/tpachat
       container_name: achatproject1
       restart: on-failure
       ports:
-        - 9000:9000
+        - 8089:8089
       depends_on:
-        - mysqldb
+        - mysqldb1
