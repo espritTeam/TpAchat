@@ -66,7 +66,8 @@ public class ReglementServiceImplMockTest {
         Mockito.when(reglementRepository.findById(Mockito.anyLong())).thenReturn(Optional.of(R));
         Reglement pr =reglementservice.retrieveReglement(2L);
         Reglement R= reglementservice.addReglement(pr);
-        assertNotNull(R.getMontantPaye());
+       // assertNotNull(R.getMontantPaye());
+        assertNotEquals(0.0, R.getMontantPaye(), 0.001);
         assertNotNull(R.getMontantRestant());
         assertNotNull(R.getPayee());
         assertNotNull(R.getDateReglement());
