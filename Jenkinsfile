@@ -3,7 +3,7 @@ pipeline {
         NEXUS_USER = "admin"
         NEXUS_PASSWORD = "admin123"
         registry = "islem23/tpachat23" 
-        registryCredential = 'dockerHub' 
+        registryCredential = '' 
         dockerImage = '' 
         NEXUS_VERSION = "nexus3"
         NEXUS_PROTOCAOL = "http"
