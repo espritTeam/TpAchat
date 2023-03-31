@@ -57,19 +57,22 @@ pipeline {
             }
         }
         stage('Cleaning up') { 
+            catchError {
 
             steps { 
 
                 sh "docker rmi $registry:$BUILD_NUMBER" 
 
             }
+            }
 
         }
          stage('Docker compose ') {
+            catchError {
             steps {
                 sh ' docker-compose down '
                 sh ' docker-compose up --force-recreate -d'
-        }
+        } }
     }
 }
 }
