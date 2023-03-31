@@ -2,7 +2,7 @@ pipeline {
      environment { 
         NEXUS_USER = "admin"
         NEXUS_PASSWORD = "admin123"
-        registry = "islem23/tpachat23" 
+        registry = "islem23/tpachat" 
         registryCredential = '' 
         dockerImage = '' 
         NEXUS_VERSION = "nexus3"
