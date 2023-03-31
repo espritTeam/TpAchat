@@ -38,17 +38,21 @@ pipeline {
         }
         stage('Building Docker Image') { 
             steps { 
+                catchError { 
                 script { 
                     dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
                 }
             } 
         }
           stage('Deploy Docker Image') { 
             steps { 
+                catchError { 
                 script { 
                     docker.withRegistry( '', registryCredential ) { 
                         dockerImage.push() 
                     }
+                  }
                 } 
             }
         }
