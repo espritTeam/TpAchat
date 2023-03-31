@@ -73,7 +73,7 @@ public class ClientServiceImplTest {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date startDate = dateFormat.parse("28/09/2000");
 		Date endDate = dateFormat.parse("30/09/2005");
-		List<Client> clients = clientService.getClientsByDateNaissance(startDate, endDate);
+		List<Client> clients = clientService.getClientsByDateNaissance(startDate, endDate );
 		log.info(" count" + clients.size());
 		for (Client client : clients) {
 			log.info(" client : " + client.getNom()+ " né le "+client.getDateNaissance());
