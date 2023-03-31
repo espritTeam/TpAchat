@@ -51,7 +51,7 @@ public class ClientServiceImplTest {
 				CategorieClient.Ordinaire);
 		Client client = clientService.addClient(c);
 		clientService.deleteClient(client.getIdClient());
-		assertNull(clientService.retrieveClient(client.getIdClient()));
+		assertNull(clientService.retrieveClient(client.getIdClient() ));
 	}
 
 	@Test
