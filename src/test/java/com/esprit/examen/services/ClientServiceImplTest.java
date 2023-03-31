@@ -58,7 +58,7 @@ public class ClientServiceImplTest {
 	public void testRetrieveAllClients() throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		Date dateNaissance = dateFormat.parse("30/09/2000");
-		List<Client> clients = clientService.retrieveAllClients();
+		List<Client> clients = clientService.retrieveAllClients() ;
 		int expected = clients.size();
 		Client c = new Client("Salhi", "Ahmed", dateNaissance, "ahmed.salhi@esprit.tn", "pwd", Profession.Cadre,
 				CategorieClient.Ordinaire);
