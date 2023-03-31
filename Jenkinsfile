@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Unite Test') {
             steps {
-                 sh 'mvn test'
+                 sh 'mvn clean test jacoco:report'
             }
         }
         stage ('SonarQube') {
