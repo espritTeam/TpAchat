@@ -57,10 +57,10 @@ pipeline {
             }
         }
         stage('Cleaning up') { 
-            catchError {
+            
 
             steps { 
-
+                catchError {
                 sh "docker rmi $registry:$BUILD_NUMBER" 
 
             }
