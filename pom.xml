@@ -30,8 +30,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
-		<!-- https://mvnrepository.com/artifact/junit/junit -->
 
 
 
@@ -46,11 +44,7 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
