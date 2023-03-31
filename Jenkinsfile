@@ -68,8 +68,9 @@ pipeline {
 
         }
          stage('Docker compose ') {
-            catchError {
+            
             steps {
+                catchError {
                 sh ' docker-compose down '
                 sh ' docker-compose up --force-recreate -d'
         } }
