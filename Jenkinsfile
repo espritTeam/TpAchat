@@ -36,6 +36,36 @@ pipeline {
                 sh 'sh mvn deploy'
             }
         }
+        stage('Building Docker Image') { 
+            steps { 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
+            } 
+        }
+          stage('Deploy Docker Image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        }
+        stage('Cleaning up') { 
+
+            steps { 
+
+                sh "docker rmi $registry:$BUILD_NUMBER" 
+
+            }
+
+        }
+         stage('Docker compose ') {
+            steps {
+                sh ' docker-compose down '
+                sh ' docker-compose up --force-recreate -d'
+        }
     }
 }
 
