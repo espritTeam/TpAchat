@@ -11,6 +11,7 @@ import com.esprit.examen.entities.Stock;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
+
 public class StockServiceImplTest {
 	@Autowired
 	IStockService stockService;
